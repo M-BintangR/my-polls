@@ -26,13 +26,30 @@
     polls = [e.detail, ...polls];
     activeItem = "Current Polls";
   };
+
+  const handleVote = (e) => {
+    const { id, option } = e.detail;
+
+    let coppiedVotes = [...polls];
+    let upVote = coppiedVotes.find((vote) => vote.id == id);
+
+    if (option == "a") {
+      upVote.votesA++;
+    }
+
+    if (option == "b") {
+      upVote.votesB++;
+    }
+
+    polls = coppiedVotes;
+  };
 </script>
 
 <Header />
 <main>
   <Tabs on:tabChange={tabChange} {items} {activeItem} />
   {#if activeItem == "Current Polls"}
-    <PollList {polls} />
+    <PollList {polls} on:vote={handleVote} />
   {:else if activeItem == "Add New Poll"}
     <CreatePolls on:add={handleAdd} />
   {/if}
