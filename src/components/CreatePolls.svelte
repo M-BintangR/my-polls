@@ -3,6 +3,7 @@
   import Button from "./Button.svelte";
 
   let dispatch = createEventDispatcher();
+
   let fields = { question: "", answerA: "", answerB: "" };
   let erros = { question: "", answerA: "", answerB: "" };
   let valid = false;
@@ -23,6 +24,11 @@
     if (fields.answerB.trim().length < 5) {
       valid = false;
       erros.answerB = "Answer A must be at latest 5 character long";
+    }
+
+    if (valid) {
+      let polls = { ...fields, votesA: 0, votesB: 0, id: Math.random() };
+      dispatch("add", polls);
     }
   };
 </script>
