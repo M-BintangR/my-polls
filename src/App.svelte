@@ -11,8 +11,8 @@
     {
       id: 1,
       question: "Python",
-      aswerA: "Python",
-      aswerB: "Python",
+      answerA: "Python",
+      answerB: "Python",
       votesA: 9,
       votesB: 10,
     },
