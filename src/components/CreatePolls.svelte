@@ -1,6 +1,8 @@
 <script>
+  import { createEventDispatcher } from "svelte";
   import Button from "./Button.svelte";
 
+  let dispatch = createEventDispatcher();
   let fields = { question: "", answerA: "", answerB: "" };
   let erros = { question: "", answerA: "", answerB: "" };
   let valid = false;
